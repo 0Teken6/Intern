@@ -49,7 +49,7 @@ class CustomUser(AbstractUser):
         ('follower', 'Follower'),
     )
 
-    role = models.CharField(max_length=15, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=15, choices=ROLE_CHOICES, default='follower')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

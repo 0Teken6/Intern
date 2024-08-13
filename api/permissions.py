@@ -10,6 +10,8 @@ class IsOwnerOrReaderOnly(permissions.BasePermission):
 
 class IsAuthorOrSuperUser(permissions.BasePermission):
     def has_permission(self, request, view):
-        if request.user.role not in ('author') or not request.user.is_superuser:
-            return False
-        return super().has_permission(request, view)
+        if request.user.is_superuser:
+            return True
+        if request.user.role == 'author':
+            return True
+        return False
